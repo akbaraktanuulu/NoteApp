@@ -9,5 +9,16 @@
         android:id="@+id/noteAppFragment"
         android:name="com.example.noteapp.ui.fragments.onnoteapp.NoteAppFragment"
         android:label="fragment_note_app"
-        tools:layout="@layout/fragment_note_app" />
+        tools:layout="@layout/fragment_note_app" >
+        <action
+            android:id="@+id/action_noteAppFragment_to_notesFragment"
+            app:destination="@id/notesFragment"
+            app:popUpToInclusive="true"
+            app:popUpTo="@id/noteAppFragment"/>
+    </fragment>
+    <fragment
+        android:id="@+id/notesFragment"
+        android:name="com.example.noteapp.ui.fragments.onnoteapp.NotesFragment"
+        android:label="fragment_notes"
+        tools:layout="@layout/fragment_notes" />
 </navigation>

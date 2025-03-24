@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
 import com.example.noteapp.R
 import com.example.noteapp.databinding.FragmentNoteAppBinding
@@ -63,8 +64,10 @@ class NoteAppFragment : Fragment() {
                 binding.startBtn.isVisible = position == 2
                 binding.skip.visibility = if (position != 2) View.VISIBLE else View.INVISIBLE
             }
+        })
+        binding.startBtn.setOnClickListener{
+            findNavController().navigate(R.id.action_noteAppFragment_to_notesFragment)
         }
-        )
     }
     private fun changeActiveOnboardShower(position : Int) {
         val onboardShowers = binding.onBordShort;
