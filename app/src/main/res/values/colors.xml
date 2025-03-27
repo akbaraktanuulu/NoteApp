@@ -3,8 +3,10 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="white50">#80FFFFFF</color>
+    <color name="white80">#CBFFFFFF</color>
     <color name="oreng">#D88B02</color>
     <color name="background">#252525</color>
     <color name="gray">#C4C4C4</color>
     <color name="bg_">#535353</color>
+    <color name="gray_normal">#434343</color>
 </resources>
