@@ -43,7 +43,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:textColorHint="@color/white50"
+        android:id="@+id/search"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_marginHorizontal="20dp"
@@ -51,22 +51,33 @@
         android:background="@drawable/search_bg"
         android:drawableStart="@drawable/ic_search"
         android:drawablePadding="20dp"
+        android:hint="Поиск заметок"
         android:paddingHorizontal="16dp"
         android:textColor="@color/white"
+        android:textColorHint="@color/white50"
         android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/zamet"
-        android:hint="Поиск заметок" />
+        app:layout_constraintTop_toBottomOf="@+id/zamet" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_note"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginHorizontal="20dp"
+        app:layout_constraintTop_toBottomOf="@id/search"
+        tools:listitem="@layout/note_holder"/>
 
     <ImageButton
-        android:background="@drawable/btn_pluse"
+        android:id="@+id/btn_pluse"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
         android:layout_marginEnd="23dp"
         android:layout_marginBottom="35dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_width="45dp"
+        android:background="@drawable/btn_pluse"
         android:src="@drawable/ic_pluse"
-        android:layout_height="45dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
