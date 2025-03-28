@@ -111,7 +111,6 @@ class DetailFragment : Fragment() {
             binding.readyTextView.visibility = View.VISIBLE
         } else {
             binding.readyTextView.visibility = View.GONE
-
         }
     }
 }
