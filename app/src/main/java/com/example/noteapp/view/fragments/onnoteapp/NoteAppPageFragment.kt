@@ -1,4 +1,4 @@
-package com.example.noteapp.ui.fragments.onnoteapp
+package com.example.noteapp.view.fragments.onnoteapp
 
 import android.os.Build
 import android.os.Bundle
@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.noteapp.databinding.FragmentNoteAppPageBinding
-import com.example.noteapp.models.NoteAppModel
+import com.example.noteapp.model.models.NoteAppModel
 
 class NoteAppPageFragment : Fragment() {
     private lateinit var binding: FragmentNoteAppPageBinding
@@ -16,7 +16,7 @@ class NoteAppPageFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentNoteAppPageBinding.inflate(inflater, container, false)
         return binding.root
     }

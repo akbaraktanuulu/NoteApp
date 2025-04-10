@@ -1,25 +1,31 @@
-package com.example.noteapp.ui.fragments.onnoteapp
+package com.example.noteapp.view.fragments.onnoteapp
 
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.example.noteapp.App
 import com.example.noteapp.R
-import com.example.noteapp.data.models.NoteModel
+import com.example.noteapp.model.data.models.NoteModel
 import com.example.noteapp.databinding.FragmentDetailBinding
+import com.example.noteapp.presenter.DetailContract
+import com.example.noteapp.presenter.DetailsPresenter
 import java.time.LocalDateTime
 
-class DetailFragment : Fragment() {
-
+ class DetailFragment : Fragment(), DetailContract.View {
+    private val presenter = DetailsPresenter(this@DetailFragment)
     private lateinit var binding: FragmentDetailBinding
     private lateinit var dateString : String
     private lateinit var timeString : String
+    private lateinit var noteModel : NoteModel
+    private var noteId = -1
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -55,11 +61,17 @@ class DetailFragment : Fragment() {
 
     @SuppressLint("DefaultLocale")
     private fun initialize() {
+        arguments?.let { args ->
+            noteId = args.getInt("noteId")
+        }
         val date = LocalDateTime.now()
         dateString = "${date.dayOfMonth} ${getString(getStringMonth(date.monthValue))}"
+        presenter.loadNote(noteId)
         timeString = "${date.hour}:${String.format("%02d", date.minute)}"
         binding.date.text = dateString
         binding.time.text = timeString
+        binding.edTxtTitle.setText(noteModel.title)
+        binding.edTxtText.setText(noteModel.description)
     }
 
     private fun setupListeners() = with(binding) {
@@ -99,11 +111,17 @@ class DetailFragment : Fragment() {
             val text = binding.edTxtText.text.toString()
             val date = dateString + timeString
             val note = NoteModel(title, text, date)
-            App.appDatabase?.noteDao()?.insertNote(note)
+
+            Log.d("TAG", "setupListeners: ${note} ${noteId}")
+            if (noteId == -1) {
+                presenter.saveNote(note)
+            } else {
+                note.id = noteId
+                presenter.updateNote(note)
+            }
             findNavController().navigateUp()
         }
     }
-
     private fun isCorrecNote(){
         val title = binding.edTxtTitle.text
         val text = binding.edTxtText.text
@@ -112,5 +130,14 @@ class DetailFragment : Fragment() {
         } else {
             binding.readyTextView.visibility = View.GONE
         }
+    }
+
+    override fun showNote(note: NoteModel) {
+        noteModel = note
+        Log.d("TAG", "showNote: ${noteModel} ${note.id}")
+    }
+
+    override fun showErrorMessage(message: String) {
+        Toast.makeText(requireContext(), "Ошибка", Toast.LENGTH_SHORT).show()
     }
 }

@@ -1,10 +1,10 @@
-package com.example.noteapp.ui.adapters
+package com.example.noteapp.view.adapters
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.example.noteapp.models.NoteAppModel
-import com.example.noteapp.ui.fragments.onnoteapp.NoteAppPageFragment
+import com.example.noteapp.model.models.NoteAppModel
+import com.example.noteapp.view.fragments.onnoteapp.NoteAppPageFragment
 
 class NoteAppPageAdapter(
     private val list: List<NoteAppModel>,

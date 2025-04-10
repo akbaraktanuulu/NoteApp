@@ -7,27 +7,31 @@
 
     <fragment
         android:id="@+id/noteAppFragment"
-        android:name="com.example.noteapp.ui.fragments.onnoteapp.NoteAppFragment"
+        android:name="com.example.noteapp.view.fragments.onnoteapp.NoteAppFragment"
         android:label="fragment_note_app"
-        tools:layout="@layout/fragment_note_app" >
+        tools:layout="@layout/fragment_note_app">
         <action
             android:id="@+id/action_noteAppFragment_to_notesFragment"
             app:destination="@id/notesFragment"
-            app:popUpToInclusive="true"
-            app:popUpTo="@id/noteAppFragment"/>
+            app:popUpTo="@id/noteAppFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/notesFragment"
-        android:name="com.example.noteapp.ui.fragments.onnoteapp.NotesFragment"
+        android:name="com.example.noteapp.view.fragments.onnoteapp.NotesFragment"
         android:label="fragment_notes"
-        tools:layout="@layout/fragment_notes" >
+        tools:layout="@layout/fragment_notes">
         <action
             android:id="@+id/action_notesFragment_to_detailFragment"
             app:destination="@id/detailFragment" />
     </fragment>
     <fragment
         android:id="@+id/detailFragment"
-        android:name="com.example.noteapp.ui.fragments.onnoteapp.DetailFragment"
+        android:name="com.example.noteapp.view.fragments.onnoteapp.DetailFragment"
         android:label="fragment_detail"
-        tools:layout="@layout/fragment_detail" />
+        tools:layout="@layout/fragment_detail">
+        <argument
+            android:name="noteId"
+            app:argType="integer" />
+    </fragment>
 </navigation>

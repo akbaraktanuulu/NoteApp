@@ -1,4 +1,4 @@
-package com.example.noteapp.ui.fragments.onnoteapp
+package com.example.noteapp.view.fragments.onnoteapp
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,8 +10,8 @@ import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
 import com.example.noteapp.R
 import com.example.noteapp.databinding.FragmentNoteAppBinding
-import com.example.noteapp.models.NoteAppModel
-import com.example.noteapp.ui.adapters.NoteAppPageAdapter
+import com.example.noteapp.model.models.NoteAppModel
+import com.example.noteapp.view.adapters.NoteAppPageAdapter
 
 class NoteAppFragment : Fragment() {
     private lateinit var binding: FragmentNoteAppBinding

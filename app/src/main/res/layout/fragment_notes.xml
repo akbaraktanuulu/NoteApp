@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/background"
     android:orientation="vertical"
-    tools:context=".ui.fragments.onnoteapp.NotesFragment">
+    tools:context=".view.fragments.onnoteapp.NotesFragment">
 
     <ImageView
         android:id="@+id/sherp"
@@ -64,10 +64,10 @@
         android:id="@+id/rv_note"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="4dp"
         android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="4dp"
         app:layout_constraintTop_toBottomOf="@id/search"
-        tools:listitem="@layout/note_holder"/>
+        tools:listitem="@layout/note_holder" />
 
     <ImageButton
         android:id="@+id/btn_pluse"
@@ -79,5 +79,51 @@
         android:src="@drawable/ic_pluse"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
+
+    <FrameLayout
+        android:id="@+id/alertDialogScreen"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="121dp"
+            android:layout_gravity="center"
+            android:layout_marginHorizontal="20dp"
+            android:background="@drawable/alert_dialog_backround"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Удалить заметку?"
+                android:textColor="@color/white"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp">
+
+                <Button
+                    android:id="@+id/negativeButton"
+                    style="@style/AlertButton.Negative"
+                    android:text="Отмена" />
+
+                <Button
+                    android:id="@+id/positiveButton"
+                    style="@style/AlertButton.Positive"
+                    android:layout_marginStart="24dp"
+                    android:text="Удалить" />
+            </LinearLayout>
+        </LinearLayout>
+    </FrameLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
